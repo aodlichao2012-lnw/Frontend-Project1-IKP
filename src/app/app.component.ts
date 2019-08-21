@@ -7,17 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mydreamapp';
-  isshow:boolean = false;
+  myMsg = "";
 
-  setshow()
+  onClickReset()
   {
-    if(this.isshow == true)
-    {
-      this.isshow = false;
-
-    }else
-    {
-      this.isshow = true;
-    }
+    this.myMsg = "";
   }
 }

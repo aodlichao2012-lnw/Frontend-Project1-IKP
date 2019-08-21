@@ -1,14 +1,14 @@
 <h1>Register</h1>
-<form class="login-form">
+<form class="login-form" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
     <p class="login-text">
 
     </p>
-    <input type="email" class="login-username" autofocus="true" required="true" placeholder="Email" />
-    <input type="password" class="login-password" required="true" placeholder="Password" />
-    <input type="password" class="login-password" required="true" placeholder=" People ID" />
-    <input type="date" class="login-password" required="true" placeholder=" Date of birth" />
-    <input type="submit" name="Login" value="Register" class="login-submit" />
+    <input type="email" class="login-username" autofocus="true" required="true" placeholder="Email" #Email="ngModel" [(ngModel)]="user.Email" [pattern]="emailPattern" />
+    <input type=" password " class="login-password " required="true " placeholder="Password " #Password="ngModel" [(ngModel)]="user.Password" required minlength="3" />
+    <input type="password " class="login-password " required="true " placeholder=" People ID " #People="ngModel " [(ngModel)]="user.people " [pattern]="emailPattern" />
+    <input type="date " class="login-password " required="true " placeholder=" Date of birth " />
+    <input type="submit " name="Login " value="Register " class="login-submit " [disabled]="!userRegistrationForm.valid" />
 </form>
 
-<div class="underlay-photo"></div>
-<div class="underlay-black"></div>
+<div class="underlay-photo "></div>
+<div class="underlay-black "></div>
