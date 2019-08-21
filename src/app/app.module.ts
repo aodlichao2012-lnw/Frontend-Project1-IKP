@@ -3,50 +3,48 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
-import { TestComponent } from './test/test.component';
-//import { CertComponent } from './cert/cert.component';
-//import { ResultComponent } from './result/result.component';
-import { TutorialComponent } from './tutorial/tutorial.component';
-import { ProfileComponent } from './profile/profile.component';
+//import { TestComponent } from './alltest/test/test.component';
+//import { TutorialComponent } from './alltest/tutorial/tutorial.component';
+//import { ProfileComponent } from './profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { PostComponent } from './post/post.component';
-//import { MyCertComponent } from './result/my-cert/my-cert.component';
-//import { Result2Component } from './result/result2/result2.component';
-//import { DetailComponent } from './cert/detail/detail.component';
-//import { TypeComponent } from './cert/type/type.component';
-//import { TimeComponent } from './cert/time/time.component';
+//import { PostComponent } from './alltest/post/post.component';
+//import { SettingComponent } from './profile/setting/setting.component';
+import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component';
+
+
+
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    TestComponent,
-//    CertComponent,
-  //  ResultComponent,
-    TutorialComponent,
-    ProfileComponent,
+    //TestComponent,
+   // TutorialComponent,
+  //  ProfileComponent,
     DashboardComponent,
-    PostComponent,
-   // MyCertComponent,
-   // Result2Component,
-//    DetailComponent,
-  //  TypeComponent,
-  //  TimeComponent,
+    //PostComponent,
+   LoginComponent,
+   RegisterComponent
+   // HelpacComponent,
+  //  SettingComponent,
+
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

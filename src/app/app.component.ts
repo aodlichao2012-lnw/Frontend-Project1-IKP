@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mydreamapp';
+  isshow:boolean = false;
+
+  setshow()
+  {
+    if(this.isshow == true)
+    {
+      this.isshow = false;
+
+    }else
+    {
+      this.isshow = true;
+    }
+  }
 }
