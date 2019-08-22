@@ -11,6 +11,30 @@ interface LoginStatus {
   isLoggedIn: boolean;
 }
 
+interface RegisterRequest {
+  username: string;
+  password: string;
+  cid: string;
+  email?: string;
+}
+
+interface RegisterResponse {
+  success: boolean;
+  token: string;
+}
+
+export interface RegisterParameter {
+  username: string;
+  password: string;
+  cid: string;
+  email?: string;
+}
+
+export interface RegisterResult {
+  success: boolean;
+  
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,23 +44,37 @@ export class UserService {
   readonly rootUrl = 'http://localhost:4200';
   constructor(private http: HttpClient) { }
 
-  registerUser(user: User) {
-    const body: User = {
-      username: user.username,
-      password: user.password
-     
-    }
-    var data = "username=" + user.username + "&password=" + user.password + "&grant_type=password";
-    var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
-    return this.http.post(this.rootUrl + '/api/User/Register', data,{headers : reqHeader});
+  async registerUser(user: RegisterParameter): Promise<RegisterResult> {
+    const body: RegisterRequest = user;
 
-    
+    var data = "username=" + user.username + "&password=" + user.password + "&grant_type=password";
+    var reqHeader = new HttpHeaders({ 'Content-Type': 'application/json','No-Auth':'True' });
+
+    var response = await this.http.post<RegisterResponse>
+                      (this.rootUrl + '/api/user/register', 
+                       data,{headers : reqHeader})
+                   .toPromise();
+
+    var result: RegisterResult = { 
+      success: response.success 
+    };
+
+    return result;
+    //return this.http.post(this.rootUrl + '/api/user/register', data,{headers : reqHeader});
   }
+
   //token?username=asdfsaf&password=asdasetg&grant_type=password
-  userAuthentication(userName, password) {
-    var data = "username=" + userName + "&password=" + password + "&grant_type=password";
-    var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
-    return this.http.post(this.rootUrl + '/token', data, { headers: reqHeader });
+ async userAuthentication(user : RegisterParameter) {
+   const body: RegisterRequest = user;
+    var data = "username=" + user.username + "&password=" + user.password + "&grant_type=password";
+    var reqHeader = new HttpHeaders({ 'Content-Type': 'application/json','No-Auth':'True' });
+    var response = await this.http.post<RegisterResponse>(this.rootUrl + 
+      '/token', data, { headers: reqHeader }).toPromise();
+
+     var result: RegisterResult = { 
+      success: response.success 
+    };
+    return result;
   }
 
   getUserClaims(){

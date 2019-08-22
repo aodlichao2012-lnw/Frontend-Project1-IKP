@@ -18,8 +18,8 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
-  OnSubmit(user){
-    this.userService.registerUser(user).subscribe((data : any)=>{
+ async OnSubmit(user){
+   await  this.userService.registerUser(user).then((data : any)=>{
      localStorage.setItem('userToken',data.access_token);
      this.router.navigate(['Register']);
    },
