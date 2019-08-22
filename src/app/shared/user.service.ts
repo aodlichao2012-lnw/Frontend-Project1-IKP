@@ -26,10 +26,13 @@ export class UserService {
       password: user.password
      
     }
-    var reqHeader = new HttpHeaders({'No-Auth':'True'});
-    return this.http.post(this.rootUrl + '/api/User/Register', body,{headers : reqHeader});
-  }
+    var data = "username=" + user.username + "&password=" + user.password + "&grant_type=password";
+    var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
+    return this.http.post(this.rootUrl + '/api/User/Register', data,{headers : reqHeader});
 
+    
+  }
+  //token?username=asdfsaf&password=asdasetg&grant_type=password
   userAuthentication(userName, password) {
     var data = "username=" + userName + "&password=" + password + "&grant_type=password";
     var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
@@ -40,6 +43,7 @@ export class UserService {
    return  this.http.get(this.rootUrl+'/api/GetUserClaims');
   }
 
+  
 
 }
 

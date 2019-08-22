@@ -17,9 +17,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import { AuthGuard } from './auth/auth.guard';
-import { UserService } from './shared/user.service'
+
+import { UserService } from './shared/user.service';
 import { User } from './shared/data.model';
 import { HttpClientModule } from '@angular/common/http';
+import { from } from 'rxjs';
 
 
 

@@ -1,12 +1,12 @@
 <h1>Register</h1>
-<form class="login-form" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
+<form class="login-form" #RegisterForm="ngForm" (ngSubmit)="OnSubmit(username.value,password.value)">
     <p class="login-text">
 
     </p>
-    <input type="email" class="login-username" autofocus="true" required="true" placeholder="Email" #username="ngModel" [(ngModel)]="user.username" [pattern]="emailPattern" />
-    <input type=" password " class="login-password " required="true " placeholder="Password " #password="ngModel" [(ngModel)]="user.password" required minlength="3" />
-    <input type="password" class="login-password " required="true " placeholder=" People ID " #people="ngModel" [(ngModel)]="user.people" maxlength="13" />
-    <input type="date " required="true " class="login-password " placeholder=" Date of birth " #date="ngModel" [(ngModel)]="user.date" />
+    <input type="email" class="login-username" autofocus="true" required="true" placeholder="Email" #username ngModel name="username" [pattern]="emailPattern" />
+    <input type=" password " class="login-password " required="true " placeholder="Password " #password ngModel name="password" required minlength="3" />
+    <input type="password" class="login-password " required="true " placeholder=" People ID " maxlength="13" />
+    <input type="date " required="true " class="login-password " placeholder=" Date of birth " />
     <button [disabled]="!userRegistrationForm.valid" class="login-submit " type="submit">Submit</button>
 </form>
 
