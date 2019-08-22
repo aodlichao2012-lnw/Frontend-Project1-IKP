@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService} from '../../shared/user.service';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -6,17 +9,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  
+  isLoginError : boolean = false;
+  constructor(private userService : UserService,private router : Router) { }
+ 
 
-  model ={
-    email :'',
-    password:'',
-    people: ''
-  };
-  emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  serverErrorMessages: string;
-  constructor() { }
 
   ngOnInit() {
   }
+  OnSubmit(username,password){
+    this.userService.userAuthentication(username,password).subscribe((data : any)=>{
+     localStorage.setItem('userToken',data.access_token);
+     this.router.navigate(['login']);
+   },
+   (err : HttpErrorResponse)=>{
+     this.isLoginError = true;
+   });
+ }
+ 
+ }
 
-}
+
+
+

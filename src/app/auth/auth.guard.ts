@@ -7,16 +7,15 @@ import { Router } from "@angular/router";
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private userService : UserService,private router : Router){}
- 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): boolean {
-      if (!this.userService.isLoggedIn()) {
-        this.router.navigateByUrl('/login');
-        this.userService.deleteToken();
+  
+    constructor(private router : Router){}
+    canActivate(
+      next: ActivatedRouteSnapshot,
+      state: RouterStateSnapshot):  boolean {
+        if (localStorage.getItem('userToken') != null)
+        return true;
+        this.router.navigate(['/login']);
         return false;
-      }
-    return true;
     }
-}
+  }
+

@@ -7,10 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mydreamapp';
-  myMsg = "";
 
-  onClickReset()
-  {
-    this.myMsg = "";
-  }
 }

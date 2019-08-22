@@ -1,12 +1,13 @@
 <h1>Login</h1>
-<form class="login-form" #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
+<form class="login-form" #loginForm="ngForm" (ngSubmit)="OnSubmit(username.value,password.value)">
     <p class="login-text">
 
     </p>
-    <input type="email" class="login-username" placeholder="Email" #UserName ngModel name="UserName" placeholder="Username" required />
-    <input type="password" class="login-password" required="true" placeholder="Password" #Password ngModel name="Password" placeholder="Password" required />
+    <input type="email" class="login-username" placeholder="Email" required #username ngModel name="username" />
+    <input type="password" class="login-password" required="true" placeholder="Password" required #password ngModel name="password" />
     <input type="submit" name="Login" value="Login" class="login-submit" [disabled]="!loginForm.valid" />
+
 </form>
-<a href="#" class="login-forgot-pass">forgot password?</a>
+
 <div class="underlay-photo"></div>
 <div class="underlay-black"></div>

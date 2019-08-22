@@ -1,23 +1,30 @@
-<div *ngIf="true">
-    <ul #logout>
+<div class="navigation" *ngIf="true">
+
+    <ul class="res" #logout>
         <li>
             <a routerLink='home'><img src="assets/image/test2.ico" width=40px></a>
         </li>
         <li><a routerLink="contact">Contact</a></li>
         <li><a routerLink="About">about</a></li>
         <li><a routerLink="Das">Help</a></li>
-
         <li style="float:right">
             <a class="active" routerLink="Register"><img src="assets/image/test3.png" width="40px"></a>
         </li>
         <li style="float:right">
             <a class="active" routerLink="login"><img src="assets/image/test4.png" width="40px"></a>
         </li>
-
     </ul>
+    <div class="clearfix"></div>
+    <script>
+        $("span.menu").click(function() {
+            $("ul.res").slideToggle(300, function() {});
+        });
+    </script>
 </div>
-<div *ngIf="false">
-    <ul #login>
+
+<div class="navigation" *ngIf="false">
+
+    <ul #login id="menu">
         <li>
             <a routerLink='home'><img src="assets/image/test2.ico" width=40px></a>
         </li>
@@ -44,6 +51,12 @@
             </li>
         </div>
     </ul>
+    <div class="clearfix"></div>
+    <script>
+        $("span.menu").click(function() {
+            $("ul.res").slideToggle(300, function() {});
+        });
+    </script>
 </div>
 <div>
     <router-outlet></router-outlet>

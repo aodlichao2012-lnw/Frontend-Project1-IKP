@@ -1,53 +1,45 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaderResponse } from '@angular/common/http';
+import { User } from '../shared/data.model';
+
+
+
+interface LoginStatus {
+  isLoggedIn: boolean;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  public LoggedIn: EventEmitter<LoginStatus> = new EventEmitter();
 
-  login(authCredentials) {
-    return this.http.post(environment.apiBaseUrl + '/authenticate', authCredentials,this.noAuthHeader);
-    
-    
-  }
- 
- setToken(token: string) {
-    localStorage.setItem('token', token);
-  }
- 
-  getToken() {
-    return localStorage.getItem('token');
-  }
- 
-  deleteToken() {
-    localStorage.removeItem('token');
-  }
-  getUserPayload() {
-    var token = this.getToken();
-    if (token) {
-      var userPayload = atob(token.split('.')[1]);
-      return JSON.parse(userPayload);
+  readonly rootUrl = 'http://localhost:4200';
+  constructor(private http: HttpClient) { }
+
+  registerUser(user: User) {
+    const body: User = {
+      username: user.username,
+      password: user.password
+     
     }
-    else
-      return null;
-  }
- 
-  isLoggedIn() {
-    var userPayload = this.getUserPayload();
-    if (userPayload)
-      return userPayload.exp > Date.now() / 1000;
-    else
-      return false;
+    var reqHeader = new HttpHeaders({'No-Auth':'True'});
+    return this.http.post(this.rootUrl + '/api/User/Register', body,{headers : reqHeader});
   }
 
-  userAuthentication(email, password) {
-    var data = "username=" + email + "&password=" + password + "&grant_type=password";
+  userAuthentication(userName, password) {
+    var data = "username=" + userName + "&password=" + password + "&grant_type=password";
     var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
     return this.http.post(this.rootUrl + '/token', data, { headers: reqHeader });
   }
-  constructor() { }
+
+  getUserClaims(){
+   return  this.http.get(this.rootUrl+'/api/GetUserClaims');
+  }
+
+
 }
+

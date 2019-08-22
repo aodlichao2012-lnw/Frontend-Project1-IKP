@@ -18,6 +18,8 @@ import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import { AuthGuard } from './auth/auth.guard';
 import { UserService } from './shared/user.service'
+import { User } from './shared/data.model';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -45,11 +47,12 @@ import { UserService } from './shared/user.service'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule 
-    
+    FormsModule,
+    HttpClientModule
+   
 
   ],
-  providers: [AuthGuard,UserService],
+  providers: [AuthGuard,UserService , User  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

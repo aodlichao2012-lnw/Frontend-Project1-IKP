@@ -25,6 +25,7 @@ import { RegisterComponent } from './user/register/register.component';
 
 
 
+
 const routes: Routes = [
   {path: "",redirectTo : "home", pathMatch: "full"},
   { path: 'home', component: HomeComponent },
@@ -48,7 +49,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), CertModule,ResultModule,ProfileModule , AlltestModule ],
+  imports: [RouterModule.forRoot(routes), CertModule,ResultModule,ProfileModule , AlltestModule  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
