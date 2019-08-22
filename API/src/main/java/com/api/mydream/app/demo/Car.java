@@ -1,7 +1,10 @@
 package com.api.mydream.app.demo;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+import io.micrometer.core.lang.NonNull;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,5 +16,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString @EqualsAndHashCode
 public class Car {
+	 @Id @GeneratedValue
+	    private Long id;
+	    private @NonNull String name;
 
 }
