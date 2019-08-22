@@ -19,5 +19,14 @@ public class Car {
 	 @Id @GeneratedValue
 	    private Long id;
 	    private @NonNull String name;
+		public void setName(String name2) {
+			this.name = name2;
+			
+		}
+		public Object getName() {
+			// TODO Auto-generated method stub
+			return name;
+		}
+	    
 
 }
