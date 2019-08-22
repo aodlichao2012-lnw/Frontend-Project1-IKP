@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
   OnSubmit(user){
     this.userService.registerUser(user).subscribe((data : any)=>{
      localStorage.setItem('userToken',data.access_token);
-     this.router.navigate(['login']);
+     this.router.navigate(['Register']);
    },
    (err : HttpErrorResponse)=>{
      this.isLoginError = true;
