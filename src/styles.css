@@ -227,9 +227,12 @@ li a {
     text-decoration: none;
 }
 
-li a:hover:not(.active) {
+.active1 {
+    background-color: #333;
+}
+
+.active1:hover {
     background-color: #111;
-    padding: 5px;
 }
 
 .active {

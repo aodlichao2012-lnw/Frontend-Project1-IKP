@@ -3,6 +3,8 @@ package RestController;
 import java.util.List;
 import java.util.stream.Stream;
 
+import javax.persistence.Entity;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.CrossOrigin;
